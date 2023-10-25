@@ -8,15 +8,15 @@
 import Foundation
 
 /// The main api interface of SweetLogger
-public enum Logger {
+public class Logger {
     
     /// Get options
-    static var options: SweetLoggerOptions {
+    public static var options: SweetLoggerOptions {
         SweetLogger.options
     }
     
     /// Get a new `SweetLogger` instance by specified tag name
-    static func t(_ tag: String) -> SweetLogger {
+    public static func t(_ tag: String) -> SweetLogger {
         SweetLogger(tag: tag)
     }
 }

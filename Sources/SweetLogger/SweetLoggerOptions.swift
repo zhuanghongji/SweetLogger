@@ -8,6 +8,6 @@
 import Foundation
 
 public class SweetLoggerOptions {
-    var enabled: Bool = false
+    public var enabled: Bool = false
 }
 

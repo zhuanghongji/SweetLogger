@@ -8,7 +8,7 @@
 import Foundation
 import CoreGraphics
 
-public typealias SweetLoggerDictionary = [String: Any]
+typealias SweetLoggerDictionary = [String: Any]
 
 public class SweetLoggerData {
     private var name: String = ""
@@ -33,11 +33,11 @@ public class SweetLoggerData {
         }.joined(separator: " ")
     }
     
-    func type(_ name: String) {
+    public func type(_ name: String) {
         self.name = name
     }
     
-    func append(_ key: String, _ value: Any) {
+    public func append(_ key: String, _ value: Any) {
         data[key] = value
     }
 }

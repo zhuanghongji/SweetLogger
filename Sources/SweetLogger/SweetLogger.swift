@@ -4,13 +4,13 @@
 import Foundation
 
 public class SweetLogger {
-    static var options = SweetLoggerOptions()
+    public static var options = SweetLoggerOptions()
     
-    static var shared = SweetLogger(tag: "Default")
+    public static var shared = SweetLogger(tag: "Default")
     
-    let tag: String
+    private let tag: String
     
-    init(tag: String) {
+    public init(tag: String) {
         self.tag = tag
     }
     

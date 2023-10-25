@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum SweetLoggerLevel: String {
+enum SweetLoggerLevel: String {
     case verbose
     case info
     case debug
@@ -15,7 +15,7 @@ public enum SweetLoggerLevel: String {
     case error
 }
 
-public extension SweetLoggerLevel {
+extension SweetLoggerLevel {
     var symbol: String {
         switch self {
         case .verbose:
