@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2934D7422AE7DD8700F42C21 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934D7412AE7DD8700F42C21 /* Logger.swift */; };
+		2934D7442AE7DEFE00F42C21 /* SweetLoggerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934D7432AE7DEFE00F42C21 /* SweetLoggerOptions.swift */; };
+		2934D7462AE7E16800F42C21 /* SweetLoggerLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934D7452AE7E16800F42C21 /* SweetLoggerLevel.swift */; };
+		2934D7482AE7E1FF00F42C21 /* SweetLoggerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934D7472AE7E1FF00F42C21 /* SweetLoggerData.swift */; };
+		2934D74A2AE7E99B00F42C21 /* SweetLoggerData+CoreGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934D7492AE7E99B00F42C21 /* SweetLoggerData+CoreGraphics.swift */; };
 		294DFD692AE7821100222167 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DFD682AE7821100222167 /* ExampleApp.swift */; };
 		294DFD6B2AE7821100222167 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DFD6A2AE7821100222167 /* ContentView.swift */; };
 		294DFD6D2AE7821300222167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294DFD6C2AE7821300222167 /* Assets.xcassets */; };
@@ -15,6 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2934D7412AE7DD8700F42C21 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		2934D7432AE7DEFE00F42C21 /* SweetLoggerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetLoggerOptions.swift; sourceTree = "<group>"; };
+		2934D7452AE7E16800F42C21 /* SweetLoggerLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetLoggerLevel.swift; sourceTree = "<group>"; };
+		2934D7472AE7E1FF00F42C21 /* SweetLoggerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetLoggerData.swift; sourceTree = "<group>"; };
+		2934D7492AE7E99B00F42C21 /* SweetLoggerData+CoreGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SweetLoggerData+CoreGraphics.swift"; sourceTree = "<group>"; };
 		294DFD652AE7821100222167 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		294DFD682AE7821100222167 /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		294DFD6A2AE7821100222167 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,7 +85,12 @@
 		294DFD792AE7831E00222167 /* SweetLogger */ = {
 			isa = PBXGroup;
 			children = (
+				2934D7412AE7DD8700F42C21 /* Logger.swift */,
 				294DFD7A2AE7831E00222167 /* SweetLogger.swift */,
+				2934D7432AE7DEFE00F42C21 /* SweetLoggerOptions.swift */,
+				2934D7452AE7E16800F42C21 /* SweetLoggerLevel.swift */,
+				2934D7472AE7E1FF00F42C21 /* SweetLoggerData.swift */,
+				2934D7492AE7E99B00F42C21 /* SweetLoggerData+CoreGraphics.swift */,
 			);
 			name = SweetLogger;
 			path = ../../Sources/SweetLogger;
@@ -154,6 +169,11 @@
 				294DFD6B2AE7821100222167 /* ContentView.swift in Sources */,
 				294DFD7B2AE7831E00222167 /* SweetLogger.swift in Sources */,
 				294DFD692AE7821100222167 /* ExampleApp.swift in Sources */,
+				2934D7482AE7E1FF00F42C21 /* SweetLoggerData.swift in Sources */,
+				2934D74A2AE7E99B00F42C21 /* SweetLoggerData+CoreGraphics.swift in Sources */,
+				2934D7422AE7DD8700F42C21 /* Logger.swift in Sources */,
+				2934D7442AE7DEFE00F42C21 /* SweetLoggerOptions.swift in Sources */,
+				2934D7462AE7E16800F42C21 /* SweetLoggerLevel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
