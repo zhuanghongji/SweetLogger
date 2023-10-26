@@ -8,37 +8,35 @@
 import Foundation
 import CoreGraphics
 
-typealias SweetLoggerDictionary = [String: Any]
+typealias SweetLoggerPair = (String, Any)
 
 public class SweetLoggerData {
     private var name: String = ""
-    private var data: SweetLoggerDictionary = [:]
-    
-    var dataContent: String {
-        do {
-            if data.keys.isEmpty {
-                return "__EmptyData__"
-            }
-            let jsonData = try JSONSerialization.data(withJSONObject: data, options: [.prettyPrinted])
-            let jsonContent = String(data: jsonData, encoding: .utf8)
-            return jsonContent ?? "__FailedToSerializeData__"
-        } catch {
-            return "__ErrorWhenSerializingData__: \(error.localizedDescription)"
-        }
-    }
+    private var data: [SweetLoggerPair] = []
     
     var content: String {
-        [name, dataContent].filter {
-            !$0.trimmingCharacters(in: .whitespaces).isEmpty
-        }.joined(separator: " ")
+        var content = name
+        content.append(" {")
+        data.forEach { (key, value) in
+            let _value = String(reflecting: value)
+            content.append("\n    \(key): \(_value)")
+        }
+        content.append(data.isEmpty ? "}" : "\n}")
+        return content
     }
     
-    public func type(_ name: String) {
+    public func type(_ name: String) -> SweetLoggerData {
         self.name = name
+        return self
+    }
+
+    public func with(_ key: String, _ value: Any?) -> SweetLoggerData {
+        data.append((key, value ?? "__nil__"))
+        return self
     }
     
-    public func append(_ key: String, _ value: Any) {
-        data[key] = value
+    public func end() {
+        // do nothing
     }
 }
 

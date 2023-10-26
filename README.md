@@ -1,6 +1,6 @@
 # SweetLogger 
 
-A sweet logger for SwiftUI.
+A beautiful and sweet logger for SwiftUI.
 
 ## Install
 
@@ -12,7 +12,7 @@ https://github.com/zhuanghongji/SweetLogger
 - "File" -> "Add Pacakge Dependencies...", paste into the text field in top-right of the window.
 - Add Package.
 
-## Usage 
+## Usage
 
 Enable Sweet Logger as anytime or anywhere you want, for example:
 
@@ -83,6 +83,22 @@ a b c
 ["b": 2, "a": 1, "c": 3]
 ```
 
+### Custom tag 
+
+```swift
+Logger.t("MyCustomTag")
+    .v("Custom tag and items", "item0", "item1", "item2", separator: ", ")
+```
+
+Prints: 
+
+```
+⚪️ [V] 2023-10-25 13:27:49.7990 SweetLogger MyCustomTag : Custom tag and items
+item0, item1, item2
+```
+
+## Advance usage
+
 ### With data 
 
 ```swift
@@ -132,36 +148,6 @@ MyData {
 
 ⚪️ [V] 2023-10-25 13:26:41.3720 SweetLogger Default : Message with optional data(absent)
 __NilData__
-```
-
-### Custom tag with ...
-
-```swift
-Logger.t("MyCustomTag")
-    .v("Custom tag and items", "item0", "item1", "item2", separator: ", ")
-Logger.t("MyCustomTag")
-    .v("Custom tag and data", data: data)
-Logger.t("MyCustomTag")
-    .v("Custom tag and optional data", optional: optionalData)
-```
-
-Prints: 
-
-```
-⚪️ [V] 2023-10-25 13:27:49.7990 SweetLogger MyCustomTag : Custom tag and items
-item0, item1, item2
-
-⚪️ [V] 2023-10-25 13:27:49.8030 SweetLogger MyCustomTag : Custom tag and data
-MyData {
-  "p1" : 1,
-  "p2" : "Two"
-}
-
-⚪️ [V] 2023-10-25 13:27:49.8030 SweetLogger MyCustomTag : Custom tag and optional data
-MyData {
-  "p1" : 1,
-  "p2" : "Two"
-}
 ```
 
 ## License
