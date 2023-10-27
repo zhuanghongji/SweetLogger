@@ -26,10 +26,10 @@ public class SweetLoggerOptions {
     /// The flag is used before the message to separate it from contextual information.
     public var separator = ":"
 
-    /// The terminator divide each block of Logger output.
+    /// The global terminator for dividing each block of Logger output.
     ///
-    /// If you prefer a more noticeable divider, "\n--------------------\n\n" is an option.
-    public var divider = "\n"
+    /// If you prefer a more noticeable terminator, "\n--------------------\n\n" is an option.
+    public var terminator = "\n"
 
     /// The print function switcher.
     ///

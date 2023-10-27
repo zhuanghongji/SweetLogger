@@ -15,6 +15,10 @@ public class SweetLogger {
     }
     
     var dateDescrition: String {
+        let dateFormat = SweetLogger.options.dateFormat
+        if dateFormat.isEmpty {
+            return ""
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = SweetLogger.options.dateFormat
         return dateFormatter.string(from: Date())
@@ -30,8 +34,9 @@ public class SweetLogger {
         guard SweetLogger.options.enabled else {
             return
         }
+        var output = ""
         
-        // message
+        // context and message
         let mainChunks: [String] = [
             level.symbol,
             level.descrition,
@@ -44,11 +49,10 @@ public class SweetLogger {
             !$0.trimmingCharacters(in: .whitespaces).isEmpty
         }
         let mainContent = mainChunks.joined(separator: " ")
-        print(mainContent, terminator: "")
+        output.append(mainContent)
         
         // items (newline first, then each item)
         if !items.isEmpty {
-            print("")
             let itemChunks: [String] = items.map { item in
                 switch item {
                 case let item as String:
@@ -60,23 +64,24 @@ public class SweetLogger {
                 }
                 return SweetLogger.options.useDebugPrint ? String(reflecting: item) : String(describing: item)
             }
-            print(itemChunks.joined(separator: separator), terminator: "")
+            output.append("\n")
+            output.append(itemChunks.joined(separator: separator))
         }
         
         // provider (newline first, then data provided)
         if provider == nil, optional {
-            print("")
-            print("__NilData__", terminator: "")
+            output.append("\n__NilData__")
         } else if let provider {
             let data = SweetLoggerData()
             provider.provideSweetLoggerData(data: data)
-            print("")
-            // Just print, because debugPrint not work with "\n"
-            print(data.content, terminator: "")
+            // Note: debugPrint not work with "\n"
+            output.append("\n")
+            output.append(data.content)
         }
         
-        // final specified terminator
-        print("\n", terminator: SweetLogger.options.divider)
+        // print with specified terminator
+        output.append("\n")
+        print(output, terminator: SweetLogger.options.terminator)
     }
 }
 
