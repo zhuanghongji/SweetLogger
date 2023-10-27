@@ -1,6 +1,6 @@
 # SweetLogger 
 
-A beautiful and sweet logger for SwiftUI.
+A beautiful and sweet logger for SwiftUI. 🐝
 
 ## Install
 
@@ -8,13 +8,13 @@ A beautiful and sweet logger for SwiftUI.
 https://github.com/zhuanghongji/SweetLogger
 ```
 
-- Copy the repo url above.
-- "File" -> "Add Pacakge Dependencies...", paste into the text field in top-right of the window.
-- Add Package.
+- Copy the URL of the repository provided above.
+- Paste it into the text field located at the top-right corner of the window by navigating to "File" -> "Add Package Dependencies...".
+- Click on "Add Package".
 
-## Usage
+## Basic usage
 
-Enable Sweet Logger as anytime or anywhere you want, for example:
+You can enable Sweet Logger anytime and anywhere you want, for example:
 
 ```swift
 @main
@@ -30,11 +30,9 @@ struct ExampleApp: App {
 }
 ```
 
-You can update logger options anytime and anywhere.
+**Note: Please ensure that Logger is enabled during debug, as it is disabled by default.**
 
-Note: Make sure to enable Logger at least during debug, as it is disabled by default.
-
-### Basic
+### Level
 
 ```swift
 Logger.v("Verbose mssage")
@@ -47,54 +45,74 @@ Logger.e("Error message")
 Prints:
 
 ```
-⚪️ [V] 2023-10-25 13:23:59.7560 SweetLogger Default : Verbose mssage
+⚪️ [V] 08:30:56.0070 Sweet Default : Verbose mssage
 
-🟢 [I] 2023-10-25 13:23:59.7670 SweetLogger Default : Info message
+🟢 [I] 08:30:56.0080 Sweet Default : Info message
 
-🔵 [D] 2023-10-25 13:23:59.7670 SweetLogger Default : Debug message
+🔵 [D] 08:30:56.0080 Sweet Default : Debug message
 
-🟠 [W] 2023-10-25 13:23:59.7680 SweetLogger Default : Warning message
+🟠 [W] 08:30:56.0080 Sweet Default : Warning message
 
-🔴 [E] 2023-10-25 13:23:59.7680 SweetLogger Default : Error message
+🔴 [E] 08:30:56.0080 Sweet Default : Error message
 ```
 
 ### With items
 
 ```swift 
-Logger.v("Message with items", 1, 2, 3)
-Logger.v("Message with items", "a", "b", "c")
-Logger.v("Message with items(array)", [1, 2, 3])
-Logger.v("Message with items(dictionary)", ["a": 1, "b": 2, "c": 3])
+Logger.v("With items", 1, 2, 3)
+Logger.v("With items", "a", "b", "c")
+Logger.v("With items(array)", [1, 2, 3])
+Logger.v("With items(dictionary)", ["a": 1, "b": 2, "c": 3])
+
+let url = URL(string: "https://developer.apple.com")
+Logger.v("The url is", url ?? "__nil__")
+
+let point = CGPoint(x: 1, y: 2)
+Logger.v("The point is", point)
+
+let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
+Logger.v("The rect is", rect)
 ```
 
 Prints:
 
 ```
-⚪️ [V] 2023-10-25 13:24:55.7000 SweetLogger Default : Message with items
+⚪️ [V] 08:30:56.0080 Sweet Default : With items
 1 2 3
 
-⚪️ [V] 2023-10-25 13:24:55.7010 SweetLogger Default : Message with items
+⚪️ [V] 08:30:56.0080 Sweet Default : With items
 a b c
 
-⚪️ [V] 2023-10-25 13:24:55.7010 SweetLogger Default : Message with items(array)
+⚪️ [V] 08:30:56.0080 Sweet Default : With items(array)
 [1, 2, 3]
 
-⚪️ [V] 2023-10-25 13:24:55.7020 SweetLogger Default : Message with items(dictionary)
+⚪️ [V] 08:30:56.0090 Sweet Default : With items(dictionary)
 ["b": 2, "a": 1, "c": 3]
+
+⚪️ [V] 08:30:56.0090 Sweet Default : The url is
+https://developer.apple.com
+
+⚪️ [V] 08:30:56.0090 Sweet Default : The point is
+(1.0, 2.0)
+
+⚪️ [V] 08:30:56.0100 Sweet Default : The rect is
+(1.0, 2.0, 3.0, 4.0)
 ```
 
 ### Custom tag 
 
 ```swift
-Logger.t("MyCustomTag")
-    .v("Custom tag and items", "item0", "item1", "item2", separator: ", ")
+Logger.t("MyTag").v("Custom tag")
+Logger.t("AnotherTag").v("Another tag with items", true, false, separator: ", ")
 ```
 
 Prints: 
 
 ```
-⚪️ [V] 2023-10-25 13:27:49.7990 SweetLogger MyCustomTag : Custom tag and items
-item0, item1, item2
+⚪️ [V] 08:30:56.0100 Sweet MyTag : Custom tag
+
+⚪️ [V] 08:30:56.0100 Sweet AnotherTag : Another tag with items
+true, false
 ```
 
 ## Advance usage
@@ -102,52 +120,116 @@ item0, item1, item2
 ### With data 
 
 ```swift
-struct MyData {
+class MyClass {
     var p1 = 1
     var p2 = "Two"
 }
 
-extension MyData: SweetLoggerDataProvider {
-    func provideSweetLoggerData(data: SweetLoggerData) {
-        data.type("MyData")
-        data.append("p1", self.p1)
-        data.append("p2", self.p2)
+extension MyClass: CustomStringConvertible {
+    var description: String {
+        "MyClass(p1: \(p1), p2: \(p2))"
     }
 }
 
-let data = MyData()
-Logger.v("Message with data", data: data)
+extension MyClass: SweetLoggerDataProvider {
+    func provideSweetLoggerData(data: SweetLoggerData) {
+        data.type("MyClass")
+            .with("p1", p1)
+            .with("p2", p2)
+            .end()
+    }
+}
+
+let myClass = MyClass()
+Logger.v("When myClass with item", myClass)
+Logger.v("When myClass with data", data: myClass)
 ```
 
 Prints: 
 
 ```
-⚪️ [V] 2023-10-25 13:26:05.4660 SweetLogger Default : Message with data
-MyData {
-  "p2" : "Two",
-  "p1" : 1
+⚪️ [V] 08:30:56.0100 Sweet Default : When myClass with item
+MyClass(p1: 1, p2: Two)
+
+⚪️ [V] 08:30:56.0110 Sweet Default : When myClass with data
+MyClass {
+    p1: 1
+    p2: "Two"
 }
 ```
 
 ### With optional data
 
 ```swift
-let optionalData: MyData? = MyData()
-Logger.v("Message with optional data(exist)", optional: optionalData)
-Logger.v("Message with optional data(absent)", optional: nil)
+var myClass: MyClass? = MyClass()
+Logger.v("When myClass with optional", optional: myClass)
+
+myClass = nil
+Logger.v("When myClass is exactly an nil", optional: myClass)
 ```
 
 Prints: 
 
 ```
-⚪️ [V] 2023-10-25 13:26:41.3710 SweetLogger Default : Message with optional data(exist)
-MyData {
-  "p1" : 1,
-  "p2" : "Two"
+⚪️ [V] 08:30:56.0110 Sweet Default : When myClass with optional
+MyClass {
+    p1: 1
+    p2: "Two"
 }
 
-⚪️ [V] 2023-10-25 13:26:41.3720 SweetLogger Default : Message with optional data(absent)
+⚪️ [V] 08:30:56.0110 Sweet Default : When myClass is exactly an nil
 __NilData__
+```
+
+### With preseted data provider
+
+```swift
+let url = URL(string: "https://developer.apple.com/abc?v1=1")!
+Logger.v("The url with data", data: url)
+
+let point = CGPoint(x: 1, y: 2)
+Logger.v("The point with data", data: point)
+
+let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
+Logger.v("The rect with data", data: rect)
+```
+
+Prints: 
+
+```
+⚪️ [V] 08:30:56.0110 Sweet Default : The url with data
+URL {
+    absoluteString: "https://developer.apple.com/abc?v1=1"
+    absoluteURL: https://developer.apple.com/abc?v1=1
+    baseURL: "__nil__"
+    fragment: "__nil__"
+    host: "developer.apple.com"
+    lastPathComponent: "abc"
+    pathExtension: ""
+    port: "__nil__"
+    query: "v1=1"
+    scheme: "https"
+}
+
+⚪️ [V] 08:30:56.0110 Sweet Default : The point with data
+CGPoint {
+    x: 1.0
+    y: 2.0
+}
+
+⚪️ [V] 08:30:56.0110 Sweet Default : The rect with data
+CGRect {
+    x: 1.0
+    y: 2.0
+    width: 3.0
+    height: 4.0
+    minX: 1.0
+    minY: 2.0
+    midX: 2.5
+    midY: 4.0
+    maxX: 4.0
+    maxY: 6.0
+}
 ```
 
 ## License

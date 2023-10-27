@@ -17,6 +17,7 @@
 		294DFD6D2AE7821300222167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294DFD6C2AE7821300222167 /* Assets.xcassets */; };
 		294DFD712AE7821300222167 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294DFD702AE7821300222167 /* Preview Assets.xcassets */; };
 		294DFD7B2AE7831E00222167 /* SweetLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DFD7A2AE7831E00222167 /* SweetLogger.swift */; };
+		29EBE89E2AEA9645000B451B /* SweetLoggerData+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBE89D2AEA9645000B451B /* SweetLoggerData+Foundation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		294DFD6E2AE7821300222167 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		294DFD702AE7821300222167 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		294DFD7A2AE7831E00222167 /* SweetLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetLogger.swift; sourceTree = "<group>"; };
+		29EBE89D2AEA9645000B451B /* SweetLoggerData+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SweetLoggerData+Foundation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				2934D7432AE7DEFE00F42C21 /* SweetLoggerOptions.swift */,
 				2934D7452AE7E16800F42C21 /* SweetLoggerLevel.swift */,
 				2934D7472AE7E1FF00F42C21 /* SweetLoggerData.swift */,
+				29EBE89D2AEA9645000B451B /* SweetLoggerData+Foundation.swift */,
 				2934D7492AE7E99B00F42C21 /* SweetLoggerData+CoreGraphics.swift */,
 			);
 			name = SweetLogger;
@@ -170,6 +173,7 @@
 				294DFD7B2AE7831E00222167 /* SweetLogger.swift in Sources */,
 				294DFD692AE7821100222167 /* ExampleApp.swift in Sources */,
 				2934D7482AE7E1FF00F42C21 /* SweetLoggerData.swift in Sources */,
+				29EBE89E2AEA9645000B451B /* SweetLoggerData+Foundation.swift in Sources */,
 				2934D74A2AE7E99B00F42C21 /* SweetLoggerData+CoreGraphics.swift in Sources */,
 				2934D7422AE7DD8700F42C21 /* Logger.swift in Sources */,
 				2934D7442AE7DEFE00F42C21 /* SweetLoggerOptions.swift in Sources */,

@@ -7,6 +7,15 @@
 
 import CoreGraphics
 
+extension CGPoint: SweetLoggerDataProvider {
+    public func provideSweetLoggerData(data: SweetLoggerData) {
+        data.type("CGPoint")
+            .with("x", x)
+            .with("y", y)
+            .end()
+    }
+}
+
 extension CGSize: SweetLoggerDataProvider {
     public func provideSweetLoggerData(data: SweetLoggerData) {
         data.type("CGSize")

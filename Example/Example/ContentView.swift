@@ -6,20 +6,10 @@
 //
 
 import CoreGraphics
+import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    
-    init() {
-#if DEBUG
-        // You can update logger options anytime and anywhere.
-        //
-        // Note: Make sure to enable Logger at least during debug,
-        //       as it is disabled by default.
-        Logger.options.enabled = true
-#endif
-    }
-
     var body: some View {
         VStack {
             Text("🐝")
@@ -27,50 +17,114 @@ struct ContentView: View {
         }
         .padding()
         .onAppear {
-            Logger.v("Verbose mssage")
-            Logger.i("Info message")
-            Logger.d("Debug message")
-            Logger.w("Warning message")
-            Logger.e("Error message")
+            setupOptions()
 
-            // With items
-            Logger.v("Message with items", 1, 2, 3)
-            Logger.v("Message with items", "a", "b", "c")
-            Logger.v("Message with items(array)", [1, 2, 3])
-            Logger.v("Message with items(dictionary)", ["a": 1, "b": 2, "c": 3])
+            // Basic usage
+            testLevel()
+            testWithItems()
+            testCustomTag()
 
-            // With data
-            let data = MyData()
-            Logger.v("Message with data", data: data)
-
-            // With optional data
-            let optionalData: MyData? = MyData()
-            Logger.v("Message with optional data(exist)", optional: optionalData)
-            Logger.v("Message with optional data(absent)", optional: nil)
-
-            // Custom tag with ...
-            Logger.t("MyCustomTag")
-                .v("Message with custom tag and items",
-                   "item0", "item1", "item2", separator: ", ")
-            Logger.t("MyCustomTag")
-                .v("Message with custom tag and data", data: data)
-            Logger.t("MyCustomTag")
-                .v("Message with custom tag and optional data", optional: optionalData)
+            // Advance useage
+            testWithData()
+            testWithOptionalData()
+            testWithPresetedDataProvider()
         }
     }
 }
 
-struct MyData {
+// MARK: Options
+
+func setupOptions() {
+
+    // You can update logger options anytime and anywhere.
+    //
+    // Note: Make sure to enable Logger at least during debug,
+    //       as it is disabled by default.
+    Logger.options.enabled = true
+    
+    // Logger.options.brand = "Haha"
+    // Logger.options.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
+    // Logger.options.separator = "|"
+    // Logger.options.divider = "\n--------------------\n\n"
+    // Logger.options.useDebugPrint = true
+}
+
+// MARK: Basic usage
+
+func testLevel() {
+    Logger.v("Verbose mssage")
+    Logger.i("Info message")
+    Logger.d("Debug message")
+    Logger.w("Warning message")
+    Logger.e("Error message")
+}
+
+func testWithItems() {
+    Logger.v("With items", 1, 2, 3)
+    Logger.v("With items", "a", "b", "c")
+    Logger.v("With items(array)", [1, 2, 3])
+    Logger.v("With items(dictionary)", ["a": 1, "b": 2, "c": 3])
+    
+    let url = URL(string: "https://developer.apple.com")
+    Logger.v("The url is", url ?? "__nil__")
+    
+    let point = CGPoint(x: 1, y: 2)
+    Logger.v("The point is", point)
+
+    let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
+    Logger.v("The rect is", rect)
+}
+
+func testCustomTag() {
+    Logger.t("MyTag").v("Custom tag")
+    Logger.t("AnotherTag").v("Another tag with items", true, false, separator: ", ")
+}
+
+// MARK: Advance usage
+
+class MyClass {
     var p1 = 1
     var p2 = "Two"
 }
 
-extension MyData: SweetLoggerDataProvider {
-    func provideSweetLoggerData(data: SweetLoggerData) {
-        data.type("MyData")
-        data.append("p1", self.p1)
-        data.append("p2", self.p2)
+extension MyClass: CustomStringConvertible {
+    var description: String {
+        "MyClass(p1: \(p1), p2: \(p2))"
     }
+}
+
+extension MyClass: SweetLoggerDataProvider {
+    func provideSweetLoggerData(data: SweetLoggerData) {
+        data.type("MyClass")
+            .with("p1", p1)
+            .with("p2", p2)
+            .end()
+    }
+}
+
+func testWithData() {
+    let myClass = MyClass()
+    Logger.v("When myClass with item", myClass)
+    Logger.v("When myClass with data", data: myClass)
+}
+
+func testWithOptionalData() {
+    var myClass: MyClass? = MyClass()
+    Logger.v("When myClass with optional", optional: myClass)
+
+    myClass = nil
+    Logger.v("When myClass is exactly an nil", optional: myClass)
+}
+
+func testWithPresetedDataProvider() {
+    let url = URL(string: "https://developer.apple.com/abc?v1=1")!
+    Logger.v("The url with data", data: url)
+    
+    let point = CGPoint(x: 1, y: 2)
+    Logger.v("The point with data", data: point)
+    
+    let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
+    Logger.v("The rect with data", data: rect)
 }
 
 #Preview {

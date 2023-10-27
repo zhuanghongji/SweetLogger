@@ -16,7 +16,7 @@ public class SweetLogger {
     
     var dateDescrition: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
+        dateFormatter.dateFormat = SweetLogger.options.dateFormat
         return dateFormatter.string(from: Date())
     }
     
@@ -36,9 +36,9 @@ public class SweetLogger {
             level.symbol,
             level.descrition,
             dateDescrition,
-            "SweetLogger",
+            SweetLogger.options.brand,
             tag,
-            ":",
+            SweetLogger.options.separator,
             message.isEmpty ? "__EmptyMessage__" : message,
         ].filter {
             !$0.trimmingCharacters(in: .whitespaces).isEmpty
@@ -48,8 +48,18 @@ public class SweetLogger {
         
         // items (newline first, then each item)
         if !items.isEmpty {
-            let itemChunks: [String] = items.map { "\($0)" }
             print("")
+            let itemChunks: [String] = items.map { item in
+                switch item {
+                case let item as String:
+                    if item.isEmpty {
+                        return "__EmptyString__"
+                    }
+                default:
+                    break
+                }
+                return SweetLogger.options.useDebugPrint ? String(reflecting: item) : String(describing: item)
+            }
             print(itemChunks.joined(separator: separator), terminator: "")
         }
         
@@ -61,12 +71,12 @@ public class SweetLogger {
             let data = SweetLoggerData()
             provider.provideSweetLoggerData(data: data)
             print("")
+            // Just print, because debugPrint not work with "\n"
             print(data.content, terminator: "")
         }
         
         // final specified terminator
-        let terminator = "\n"
-        print("\n", terminator: terminator)
+        print("\n", terminator: SweetLogger.options.divider)
     }
 }
 
@@ -78,7 +88,7 @@ public extension SweetLogger {
     }
     
     func i(_ message: String, _ items: Any..., separator: String = " ") {
-        sweet(level: .info, message: message, items: items)
+        sweet(level: .info, message: message, items: items, separator: separator)
     }
     
     func d(_ message: String, _ items: Any..., separator: String = " ") {
