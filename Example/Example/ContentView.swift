@@ -7,6 +7,7 @@
 
 import CoreGraphics
 import Foundation
+import SweetLogger
 import SwiftUI
 
 struct ContentView: View {
