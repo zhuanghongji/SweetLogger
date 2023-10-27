@@ -41,7 +41,7 @@ func setupOptions() {
     // Note: Make sure to enable Logger at least during debug,
     //       as it is disabled by default.
     Logger.options.enabled = true
-    
+
     // Logger.options.brand = "Haha"
     // Logger.options.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
     // Logger.options.separator = "|"
@@ -64,10 +64,11 @@ func testWithItems() {
     Logger.v("With items", "a", "b", "c")
     Logger.v("With items(array)", [1, 2, 3])
     Logger.v("With items(dictionary)", ["a": 1, "b": 2, "c": 3])
-    
+    Logger.v("With items(empty string)", "")
+
     let url = URL(string: "https://developer.apple.com")
     Logger.v("The url is", url ?? "__nil__")
-    
+
     let point = CGPoint(x: 1, y: 2)
     Logger.v("The point is", point)
 
@@ -85,11 +86,14 @@ func testCustomTag() {
 class MyClass {
     var p1 = 1
     var p2 = "Two"
+    var p3 = true
+    var p4 = false
+    var pEmptyString = ""
 }
 
 extension MyClass: CustomStringConvertible {
     var description: String {
-        "MyClass(p1: \(p1), p2: \(p2))"
+        "MyClass(p1: \(p1), p2: \(p2), p3: \(p3), p3: \(p4), pEmptyString: \(pEmptyString))"
     }
 }
 
@@ -98,6 +102,9 @@ extension MyClass: SweetLoggerDataProvider {
         data.type("MyClass")
             .with("p1", p1)
             .with("p2", p2)
+            .with("p3", p3)
+            .with("p4", p4)
+            .with("pEmptyString", pEmptyString)
             .end()
     }
 }
@@ -113,16 +120,16 @@ func testWithOptionalData() {
     Logger.v("When myClass with optional", optional: myClass)
 
     myClass = nil
-    Logger.v("When myClass is exactly an nil", optional: myClass)
+    Logger.v("When myClass is exactly nil", optional: myClass)
 }
 
 func testWithPresetedDataProvider() {
     let url = URL(string: "https://developer.apple.com/abc?v1=1")!
     Logger.v("The url with data", data: url)
-    
+
     let point = CGPoint(x: 1, y: 2)
     Logger.v("The point with data", data: point)
-    
+
     let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
     Logger.v("The rect with data", data: rect)
 }

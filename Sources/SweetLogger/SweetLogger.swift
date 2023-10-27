@@ -54,15 +54,8 @@ public class SweetLogger {
         // items (newline first, then each item)
         if !items.isEmpty {
             let itemChunks: [String] = items.map { item in
-                switch item {
-                case let item as String:
-                    if item.isEmpty {
-                        return "__EmptyString__"
-                    }
-                default:
-                    break
-                }
-                return SweetLogger.options.useDebugPrint ? String(reflecting: item) : String(describing: item)
+                let it = SweetLogger.options.useDebugPrint ? String(reflecting: item) : String(describing: item)
+                return it.isEmpty ? "__EmptyString__" : it
             }
             output.append("\n")
             output.append(itemChunks.joined(separator: separator))
@@ -70,7 +63,7 @@ public class SweetLogger {
         
         // provider (newline first, then data provided)
         if provider == nil, optional {
-            output.append("\n__NilData__")
+            output.append("\n__nil__")
         } else if let provider {
             let data = SweetLoggerData()
             provider.provideSweetLoggerData(data: data)

@@ -18,7 +18,8 @@ public class SweetLoggerData {
         var content = name
         content.append(" {")
         data.forEach { (key, value) in
-            let _value = String(reflecting: value)
+            let it = SweetLogger.options.useDebugPrint ? String(reflecting: value) : String(describing: value)
+            let _value = it.isEmpty ? "__EmptyString__" : it
             content.append("\n    \(key): \(_value)")
         }
         content.append(data.isEmpty ? "}" : "\n}")
