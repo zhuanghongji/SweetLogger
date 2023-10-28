@@ -26,15 +26,15 @@ struct ContentView: View {
         }
         .font(.title)
         .onAppear {
-//            // Basic usage
-//            testLevel()
-//            testWithItems()
-//            testCustomTag()
-//
-//            // Advance useage
-//            testWithData()
-//            testWithOptionalData()
-//            testWithPresetedDataProvider()
+            // Basic usage
+            testLevel()
+            testWithItems()
+            testCustomTag()
+
+            // Advance useage
+            testWithData()
+            testWithOptionalData()
+            testWithPresetedDataProvider()
         }
     }
 }
@@ -49,11 +49,16 @@ func setupOptions() {
     //       as it is disabled by default.
     Logger.options.enabled = true
 
-    // Logger.options.brand = "Haha"
+    // Logger.options.brand = "Bee"
     // Logger.options.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
     // Logger.options.separator = "|"
-    // Logger.options.divider = "\n--------------------\n\n"
-    Logger.options.useDebugPrint = true
+    // Logger.options.terminator = "\n--------------------\n\n"
+
+    // Logger.options.useLevelSymbol = false
+    // Logger.options.useLevelDescrition = false
+    // Logger.options.useDebugPrint = false
+
+    // SweetLogger.shared.tag = "Honey"
 }
 
 // MARK: Basic usage

@@ -8,19 +8,18 @@ public class SweetLogger {
     
     public static var shared = SweetLogger(tag: "Default")
     
-    private let tag: String
+    public var tag: String
     
     public init(tag: String) {
         self.tag = tag
     }
     
-    var dateDescrition: String {
-        let dateFormat = SweetLogger.options.dateFormat
+    func generateDateDescrition(dateFormat: String) -> String {
         if dateFormat.isEmpty {
             return ""
         }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = SweetLogger.options.dateFormat
+        dateFormatter.dateFormat = dateFormat
         return dateFormatter.string(from: Date())
     }
     
@@ -32,19 +31,27 @@ public class SweetLogger {
                optional: Bool = false,
                raw: Any? = nil)
     {
-        guard SweetLogger.options.enabled else {
+        guard Self.options.enabled else {
             return
         }
+        let brand = Self.options.brand
+        let dateFormat = Self.options.dateFormat
+        let _separator = Self.options.separator
+        let terminator = Self.options.terminator
+        let useLevelSymbol = Self.options.useLevelSymbol
+        let useLevelDescrition = Self.options.useLevelDescrition
+        let useDebugPrint = Self.options.useDebugPrint
+        
         var output = ""
         
         // context and message
         let mainChunks: [String] = [
-            level.symbol,
-            level.descrition,
-            dateDescrition,
-            SweetLogger.options.brand,
+            useLevelSymbol ? level.symbol : "",
+            useLevelDescrition ? level.descrition : "",
+            generateDateDescrition(dateFormat: dateFormat),
+            brand,
             tag,
-            SweetLogger.options.separator,
+            _separator,
             message.isEmpty ? "__EmptyMessage__" : message,
         ].filter {
             !$0.trimmingCharacters(in: .whitespaces).isEmpty
@@ -55,7 +62,7 @@ public class SweetLogger {
         // items (newline first, then each item)
         if !items.isEmpty {
             let itemChunks: [String] = items.map { item in
-                let it = SweetLogger.options.useDebugPrint ? String(reflecting: item) : String(describing: item)
+                let it = useDebugPrint ? String(reflecting: item) : String(describing: item)
                 return it.isEmpty ? "__EmptyString__" : it
             }
             output.append("\n")
@@ -66,9 +73,8 @@ public class SweetLogger {
         if provider == nil, optional {
             output.append("\n__nil__")
         } else if let provider {
-            let data = SweetLoggerData()
+            let data = SweetLoggerData(useDebugPrint: useDebugPrint)
             provider.provideSweetLoggerData(data: data)
-            // Note: debugPrint not work with "\n"
             output.append("\n")
             output.append(data.content)
         }
@@ -80,7 +86,7 @@ public class SweetLogger {
         
         // print with specified terminator
         output.append("\n")
-        print(output, terminator: SweetLogger.options.terminator)
+        print(output, terminator: terminator)
     }
 }
 

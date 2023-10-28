@@ -11,6 +11,12 @@ import CoreGraphics
 typealias SweetLoggerPair = (String, Any)
 
 public class SweetLoggerData {
+    let useDebugPrint: Bool
+    
+    init(useDebugPrint: Bool) {
+        self.useDebugPrint = useDebugPrint
+    }
+    
     private var name: String = ""
     private var data: [SweetLoggerPair] = []
     
@@ -18,7 +24,7 @@ public class SweetLoggerData {
         var content = name
         content.append(" {")
         data.forEach { (key, value) in
-            let it = SweetLogger.options.useDebugPrint ? String(reflecting: value) : String(describing: value)
+            let it = useDebugPrint ? String(reflecting: value) : String(describing: value)
             let _value = it.isEmpty ? "__EmptyString__" : it
             content.append("\n    \(key): \(_value)")
         }

@@ -45,15 +45,15 @@ Logger.e("Error message")
 Prints:
 
 ```
-⚪️ [V] 08:26:21.8080 Sweet Default : Verbose mssage
+⚪️ [V] 08:40:41.9400 Sweet Default : Verbose mssage
 
-🟢 [I] 08:26:21.8090 Sweet Default : Info message
+🟢 [I] 08:40:41.9410 Sweet Default : Info message
 
-🔵 [D] 08:26:21.8090 Sweet Default : Debug message
+🔵 [D] 08:40:41.9410 Sweet Default : Debug message
 
-🟠 [W] 08:26:21.8090 Sweet Default : Warning message
+🟠 [W] 08:40:41.9410 Sweet Default : Warning message
 
-🔴 [E] 08:26:21.8090 Sweet Default : Error message
+🔴 [E] 08:40:41.9410 Sweet Default : Error message
 ```
 
 ### With items
@@ -78,28 +78,28 @@ Logger.v("The rect is", rect)
 Prints:
 
 ```
-⚪️ [V] 08:26:21.8090 Sweet Default : With items
+⚪️ [V] 08:40:41.9410 Sweet Default : With items
 1 2 3
 
-⚪️ [V] 08:26:21.8100 Sweet Default : With items
-a b c
+⚪️ [V] 08:40:41.9420 Sweet Default : With items
+"a" "b" "c"
 
-⚪️ [V] 08:26:21.8100 Sweet Default : With items(array)
+⚪️ [V] 08:40:41.9420 Sweet Default : With items(array)
 [1, 2, 3]
 
-⚪️ [V] 08:26:21.8100 Sweet Default : With items(dictionary)
+⚪️ [V] 08:40:41.9420 Sweet Default : With items(dictionary)
 ["a": 1, "b": 2, "c": 3]
 
-⚪️ [V] 08:26:21.8100 Sweet Default : With items(empty string)
-__EmptyString__
+⚪️ [V] 08:40:41.9420 Sweet Default : With items(empty string)
+""
 
-⚪️ [V] 08:26:21.8100 Sweet Default : The url is
+⚪️ [V] 08:40:41.9420 Sweet Default : The url is
 https://developer.apple.com
 
-⚪️ [V] 08:26:21.8100 Sweet Default : The point is
+⚪️ [V] 08:40:41.9420 Sweet Default : The point is
 (1.0, 2.0)
 
-⚪️ [V] 08:26:21.8110 Sweet Default : The rect is
+⚪️ [V] 08:40:41.9420 Sweet Default : The rect is
 (1.0, 2.0, 3.0, 4.0)
 ```
 
@@ -113,9 +113,9 @@ Logger.t("AnotherTag").v("Another tag with items", true, false, separator: ", ")
 Prints: 
 
 ```
-⚪️ [V] 08:26:21.8110 Sweet MyTag : Custom tag
+⚪️ [V] 08:40:41.9420 Sweet MyTag : Custom tag
 
-⚪️ [V] 08:26:21.8110 Sweet AnotherTag : Another tag with items
+⚪️ [V] 08:40:41.9420 Sweet AnotherTag : Another tag with items
 true, false
 ```
 
@@ -158,16 +158,16 @@ Logger.v("When myClass with data", data: myClass)
 Prints: 
 
 ```
-⚪️ [V] 08:26:21.8110 Sweet Default : When myClass with item
+⚪️ [V] 08:40:41.9430 Sweet Default : When myClass with item
 MyClass(p1: 1, p2: Two, p3: true, p3: false, pEmptyString: )
 
-⚪️ [V] 08:26:21.8120 Sweet Default : When myClass with data
+⚪️ [V] 08:40:41.9430 Sweet Default : When myClass with data
 MyClass {
     p1: 1
-    p2: Two
+    p2: "Two"
     p3: true
     p4: false
-    pEmptyString: __EmptyString__
+    pEmptyString: ""
 }
 ```
 
@@ -184,16 +184,16 @@ Logger.v("When myClass is exactly nil", optional: myClass)
 Prints: 
 
 ```
-⚪️ [V] 08:26:21.8120 Sweet Default : When myClass with optional
+⚪️ [V] 08:40:41.9430 Sweet Default : When myClass with optional
 MyClass {
     p1: 1
-    p2: Two
+    p2: "Two"
     p3: true
     p4: false
-    pEmptyString: __EmptyString__
+    pEmptyString: ""
 }
 
-⚪️ [V] 08:26:21.8120 Sweet Default : When myClass is exactly nil
+⚪️ [V] 08:40:41.9430 Sweet Default : When myClass is exactly nil
 __nil__
 ```
 
@@ -213,27 +213,27 @@ Logger.v("The rect with data", data: rect)
 Prints: 
 
 ```
-⚪️ [V] 08:26:21.8120 Sweet Default : The url with data
+⚪️ [V] 08:40:41.9430 Sweet Default : The url with data
 URL {
-    absoluteString: https://developer.apple.com/abc?v1=1
+    absoluteString: "https://developer.apple.com/abc?v1=1"
     absoluteURL: https://developer.apple.com/abc?v1=1
-    baseURL: __nil__
-    fragment: __nil__
-    host: developer.apple.com
-    lastPathComponent: abc
-    pathExtension: __EmptyString__
-    port: __nil__
-    query: v1=1
-    scheme: https
+    baseURL: "__nil__"
+    fragment: "__nil__"
+    host: "developer.apple.com"
+    lastPathComponent: "abc"
+    pathExtension: ""
+    port: "__nil__"
+    query: "v1=1"
+    scheme: "https"
 }
 
-⚪️ [V] 08:26:21.8120 Sweet Default : The point with data
+⚪️ [V] 08:40:41.9430 Sweet Default : The point with data
 CGPoint {
     x: 1.0
     y: 2.0
 }
 
-⚪️ [V] 08:26:21.8120 Sweet Default : The rect with data
+⚪️ [V] 08:40:41.9440 Sweet Default : The rect with data
 CGRect {
     x: 1.0
     y: 2.0
@@ -278,14 +278,14 @@ struct TestLoggerModifiersView1: View {
 When the view appears, prints:
 
 ```
-⚪️ [V] 08:41:14.8180 Sweet Default : loggerAppearance
+⚪️ [V] 08:40:41.9440 Sweet Default : loggerAppearance
 onAppear(name: "GlobeImage")
 ```
 
 After a tap on "Toggle Visibility" button, it will print:
 
 ```
-⚪️ [V] 08:41:17.6480 Sweet Default : loggerAppearance
+⚪️ [V] 08:43:29.1100 Sweet Default : loggerAppearance
 onDisappear(name: "GlobeImage")
 ```
 
@@ -323,23 +323,23 @@ struct TestLoggerModifiersView2: View {
 When this view initially appears, it will print:
 
 ```
-⚪️ [V] 08:45:24.1200 Sweet Default : loggerChange
+⚪️ [V] 08:40:41.9440 Sweet Default : loggerChange
 onChange(name: "countDescrition", oldValue: "0", newValue: "0")
 
-⚪️ [V] 08:45:24.1210 Sweet Default : loggerChange
+⚪️ [V] 08:40:41.9440 Sweet Default : loggerChange
 onChange(name: "count", oldValue: 0, newValue: 0)
 ```
 
 After a tap on "Add Count" button, it will print:
 
 ```
-⚪️ [V] 08:45:34.7620 Sweet Default : loggerChange
+⚪️ [V] 08:43:30.0390 Sweet Default : loggerChange
 onChange(oldValue: 0, newValue: 1)
 
-⚪️ [V] 08:45:34.7620 Sweet Default : loggerChange
+⚪️ [V] 08:43:30.0400 Sweet Default : loggerChange
 onChange(name: "count", oldValue: 0, newValue: 1)
 
-⚪️ [V] 08:45:34.7630 Sweet Default : loggerChange
+⚪️ [V] 08:43:30.0400 Sweet Default : loggerChange
 onChange(name: "countDescrition", oldValue: "0", newValue: "1")
 ```
 

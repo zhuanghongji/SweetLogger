@@ -51,7 +51,7 @@ extension View {
             }
             let _name = name.isEmpty ? "" : "name: \"\(name)\", "
             
-            let useDebugPrint = SweetLogger.options.useDebugPrint
+            let useDebugPrint = Logger.options.useDebugPrint
             var _oldValue = useDebugPrint ? String(reflecting: oldValue) : String(describing: oldValue)
             if _oldValue.isEmpty {
                 _oldValue = "__EmptyString__"
