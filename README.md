@@ -12,7 +12,7 @@ https://github.com/zhuanghongji/SweetLogger
 - Paste it into the text field located at the top-right corner of the window by navigating to "File" -> "Add Package Dependencies...".
 - Click on "Add Package".
 
-## Basic usage
+## Init
 
 You can enable Sweet Logger anytime and anywhere you want, for example:
 
@@ -22,15 +22,33 @@ struct ExampleApp: App {
 
     init() {
 #if DEBUG
-        Logger.options.enabled = true
+        initLogger()
 #endif
+    }
+
+    func initLogger() {
+        Logger.options.enabled = true
+
+        // Logger.options.brand = "Bee"
+        
+        // Logger.options.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
+        // Logger.options.separator = "|"
+        // Logger.options.terminator = "\n--------------------\n\n"
+
+        // Logger.options.useLevelSymbol = false
+        // Logger.options.useLevelDescrition = false
+        // Logger.options.useDebugPrint = false
+
+        // SweetLogger.shared.tag = "Honey"
     }
 
     // ...
 }
 ```
 
-**Note: Please ensure that Logger is enabled during debug, as it is disabled by default.**
+Note: Please ensure that Logger is enabled during debug, as it is disabled by default.
+
+## Basic usage
 
 ### Level
 
