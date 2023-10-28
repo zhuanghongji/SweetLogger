@@ -8,7 +8,7 @@
 import Foundation
 
 /// The main api interface of SweetLogger
-public class Logger {
+public enum Logger {
     
     /// Get options
     public static var options: SweetLoggerOptions {
@@ -108,5 +108,15 @@ public extension Logger {
     /// Print message in error level with optional data provider
     static func e(_ message: String, optional: SweetLoggerDataProvider) {
         SweetLogger.shared.e(message, optional: optional)
+    }
+}
+
+// MARK: With Raw
+
+public extension Logger {
+    
+    /// Print message in verbose level with raw content.
+    static func raw(_ message: String, _ raw: Any) {
+        SweetLogger.shared.raw(message, raw)
     }
 }

@@ -248,6 +248,101 @@ CGRect {
 }
 ```
 
+### Using logger modifiers
+
+#### loggerAppearance(name:)
+
+A wrapper of `onAppear(perform:)` and `onDisappear(perform:)`, for example:
+
+```swift
+struct TestLoggerModifiersView1: View {
+    @State private var visible = true
+
+    var body: some View {
+        VStack {
+            if visible {
+                Image(systemName: "globe")
+                    .loggerAppearance(name: "GlobeImage")
+            }
+            Button {
+                visible.toggle()
+            } label: {
+                Text("Toggle Visibility")
+            }
+        }
+        .padding()
+    }
+}
+```
+
+When the view appears, prints:
+
+```
+⚪️ [V] 08:41:14.8180 Sweet Default : loggerAppearance
+onAppear(name: "GlobeImage")
+```
+
+After a tap on "Toggle Visibility" button, it will print:
+
+```
+⚪️ [V] 08:41:17.6480 Sweet Default : loggerAppearance
+onDisappear(name: "GlobeImage")
+```
+
+#### loggerChange(of:initial:name:)
+
+A wrapper of `onChange(of:initial:_:)`, for example: 
+
+```swift
+struct TestLoggerModifiersView2: View {
+    @State private var count = 0
+
+    var countDescrition: String {
+        "\(count)"
+    }
+
+    var body: some View {
+        VStack {
+            Text(countDescrition)
+            Button {
+                count += 1
+            } label: {
+                withAnimation {
+                    Text("Add Count")
+                }
+            }
+        }
+        .padding()
+        .loggerChange(of: countDescrition, initial: true, name: "countDescrition")
+        .loggerChange(of: count, initial: true, name: "count")
+        .loggerChange(of: count)
+    }
+}
+```
+
+When this view initially appears, it will print:
+
+```
+⚪️ [V] 08:45:24.1200 Sweet Default : loggerChange
+onChange(name: "countDescrition", oldValue: "0", newValue: "0")
+
+⚪️ [V] 08:45:24.1210 Sweet Default : loggerChange
+onChange(name: "count", oldValue: 0, newValue: 0)
+```
+
+After a tap on "Add Count" button, it will print:
+
+```
+⚪️ [V] 08:45:34.7620 Sweet Default : loggerChange
+onChange(oldValue: 0, newValue: 1)
+
+⚪️ [V] 08:45:34.7620 Sweet Default : loggerChange
+onChange(name: "count", oldValue: 0, newValue: 1)
+
+⚪️ [V] 08:45:34.7630 Sweet Default : loggerChange
+onChange(name: "countDescrition", oldValue: "0", newValue: "1")
+```
+
 ## License
 
 SweetLogger is available under the MIT license. See the LICENSE file for more info.

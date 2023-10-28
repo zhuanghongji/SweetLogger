@@ -11,24 +11,30 @@ import SweetLogger
 import SwiftUI
 
 struct ContentView: View {
+
+    init() {
+        setupOptions()
+    }
+
     var body: some View {
         VStack {
             Text("🐝")
             Text("Hello, SweetLogger")
+
+            TestLoggerModifiersView1()
+            TestLoggerModifiersView2()
         }
-        .padding()
+        .font(.title)
         .onAppear {
-            setupOptions()
-
-            // Basic usage
-            testLevel()
-            testWithItems()
-            testCustomTag()
-
-            // Advance useage
-            testWithData()
-            testWithOptionalData()
-            testWithPresetedDataProvider()
+//            // Basic usage
+//            testLevel()
+//            testWithItems()
+//            testCustomTag()
+//
+//            // Advance useage
+//            testWithData()
+//            testWithOptionalData()
+//            testWithPresetedDataProvider()
         }
     }
 }
@@ -47,7 +53,7 @@ func setupOptions() {
     // Logger.options.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
     // Logger.options.separator = "|"
     // Logger.options.divider = "\n--------------------\n\n"
-    // Logger.options.useDebugPrint = true
+    Logger.options.useDebugPrint = true
 }
 
 // MARK: Basic usage
@@ -133,6 +139,52 @@ func testWithPresetedDataProvider() {
 
     let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
     Logger.v("The rect with data", data: rect)
+}
+
+// MARK: Using logger modifiers
+
+struct TestLoggerModifiersView1: View {
+    @State private var visible = true
+
+    var body: some View {
+        VStack {
+            if visible {
+                Image(systemName: "globe")
+                    .loggerAppearance(name: "GlobeImage")
+            }
+            Button {
+                visible.toggle()
+            } label: {
+                Text("Toggle Visibility")
+            }
+        }
+        .padding()
+    }
+}
+
+struct TestLoggerModifiersView2: View {
+    @State private var count = 0
+
+    var countDescrition: String {
+        "\(count)"
+    }
+
+    var body: some View {
+        VStack {
+            Text(countDescrition)
+            Button {
+                count += 1
+            } label: {
+                withAnimation {
+                    Text("Add Count")
+                }
+            }
+        }
+        .padding()
+        .loggerChange(of: countDescrition, initial: true, name: "countDescrition")
+        .loggerChange(of: count, initial: true, name: "count")
+        .loggerChange(of: count)
+    }
 }
 
 #Preview {

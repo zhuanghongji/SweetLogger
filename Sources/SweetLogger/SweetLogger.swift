@@ -29,7 +29,8 @@ public class SweetLogger {
                items: [Any] = [],
                separator: String = " ",
                provider: SweetLoggerDataProvider? = nil,
-               optional: Bool = false)
+               optional: Bool = false,
+               raw: Any? = nil)
     {
         guard SweetLogger.options.enabled else {
             return
@@ -70,6 +71,11 @@ public class SweetLogger {
             // Note: debugPrint not work with "\n"
             output.append("\n")
             output.append(data.content)
+        }
+        
+        // raw
+        if let raw {
+            output.append("\n\(raw)")
         }
         
         // print with specified terminator
@@ -147,5 +153,13 @@ public extension SweetLogger {
     
     func e(_ message: String, optional provider: SweetLoggerDataProvider?) {
         sweet(level: .error, message: message, provider: provider, optional: true)
+    }
+}
+
+// MARK: With Raw
+
+public extension SweetLogger {
+    func raw(_ message: String, _ raw: Any) {
+        sweet(level: .verbose, message: message, raw: raw)
     }
 }

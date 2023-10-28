@@ -12,6 +12,7 @@
 		294DFD6D2AE7821300222167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294DFD6C2AE7821300222167 /* Assets.xcassets */; };
 		294DFD712AE7821300222167 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294DFD702AE7821300222167 /* Preview Assets.xcassets */; };
 		29EBE8A42AEB549D000B451B /* SweetLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBE8A32AEB549D000B451B /* SweetLogger */; };
+		29EBE8A62AEB5C57000B451B /* SweetLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBE8A52AEB5C57000B451B /* SweetLogger */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -377,6 +378,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		29EBE8A32AEB549D000B451B /* SweetLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SweetLogger;
+		};
+		29EBE8A52AEB5C57000B451B /* SweetLogger */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SweetLogger;
 		};
