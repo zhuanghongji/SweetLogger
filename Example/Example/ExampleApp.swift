@@ -2,7 +2,7 @@
 //  ExampleApp.swift
 //  Example
 //
-//  Created by 庄宏基 on 2023/10/24.
+//  Created by zhuanghongji on 2023/10/24.
 //
 
 import SwiftUI

@@ -2,7 +2,7 @@
 //  SweetLoggerData+Foundation.swift
 //  Example
 //
-//  Created by 庄宏基 on 2023/10/26.
+//  Created by zhuanghongji on 2023/10/26.
 //
 
 import Foundation
