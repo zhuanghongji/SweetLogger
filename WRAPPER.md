@@ -1,6 +1,6 @@
 # Wrapper
 
-Create an enum named `Log` that uses `Logger` internally.
+Create an enum named `Log` that uses `Logger` internally:
 
 ```swift
 import SweetLogger
@@ -97,7 +97,7 @@ extension Log {
 }
 ```
 
-Then, you can use it throughout your project. Just like the following:
+Then, you can use it throughout your project:
 
 ```swift
 // Call it when your app first launched.
@@ -179,3 +179,5 @@ func logWithPresetedDataProvider() {
     Log.v("The rect with data", data: rect)
 }
 ```
+
+All outputs from `Log` are the same as those from `Logger`.

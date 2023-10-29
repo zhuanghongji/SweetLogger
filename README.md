@@ -48,6 +48,20 @@ struct ExampleApp: App {
 
 Note: Please ensure that Logger is enabled during debug, as it is disabled by default.
 
+## Options
+
+| Option | Description | Type | Default |
+| -- | -- | -- | -- | 
+| `brand` | The brand text that using in each output. | String | "Sweet" |
+| `dateFormat` | The date format in output. | String | "HH:mm:ss.SSSS" |
+| `separator` | The flag is used before the message to separate it from contextual information. | String | ":" |
+| `terminator` | The global terminator for dividing each block of Logger output. | String |  "\n" |
+| `useLevelSymbol` |  When enabled, the output will be prefixed with an emojj that corresponds to the level.  | Bool |  true |
+| `useLevelDescription` |  When enabled, the output will be prefixed with a brief description that corresponds to the level. | Bool |  true |
+| `useDebugPrint` | The print function switcher. | Bool |  true |
+
+Note: Please refer to the [SweetLoggerOptions.swift](./Sources/SweetLogger/SweetLoggerOptions.swift) source file for detailed information about the options. Additionally, you can find a comparison between `print(_:separator:terminator:)` and `debugPrint(_:separator:terminator:)` in [WHATISPRINT.md](./WHATISPRINT.md).
+
 ## Basic usage
 
 ### Log by level
