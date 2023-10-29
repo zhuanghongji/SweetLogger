@@ -17,12 +17,20 @@ struct ContentView: View {
     }
 
     var body: some View {
-        VStack {
-            Text("🐝")
-            Text("Hello, SweetLogger")
+        NavigationStack {
+            VStack {
+                Text("🐝")
+                Text("Hello, SweetLogger")
 
-            TestLoggerModifiersView1()
-            TestLoggerModifiersView2()
+                TestLoggerModifiersView1()
+                TestLoggerModifiersView2()
+
+                NavigationLink {
+                    LogView()
+                } label: {
+                    Text("LogView")
+                }
+            }
         }
         .font(.title)
         .onAppear {

@@ -361,6 +361,12 @@ onChange(name: "count", oldValue: 0, newValue: 1)
 onChange(name: "countDescription", oldValue: "0", newValue: "1")
 ```
 
+## Using a wrapper instead of Logger 
+
+Sometimes we don't want a third-party library to be tightly coupled with our own project. SweetLogger understands this and has been designed accordingly. It exposes the `Logger` as the main API, which can be wrapped within an `enum` or a `class` that you can use throughout your project. 
+
+You can find an example in [WRAPPER.md](./WRAPPER.md).
+
 ## License
 
 SweetLogger is available under the MIT license. See the LICENSE file for more info.
