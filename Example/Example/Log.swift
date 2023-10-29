@@ -16,7 +16,7 @@ enum Log {
     }
     
     static func t(_ tag: String) -> SweetLogger {
-        SweetLogger(tag: tag)
+        Logger.t(tag)
     }
 }
 

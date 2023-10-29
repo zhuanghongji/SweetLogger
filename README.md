@@ -1,6 +1,6 @@
 # SweetLogger 
 
-A beautiful and sweet logger for SwiftUI. 🐝
+A beautiful and sweet logger for Swift and SwiftUI. 🐝
 
 ## Install
 

@@ -17,7 +17,11 @@ public enum Logger {
     
     /// Get a new `SweetLogger` instance by specified tag name
     public static func t(_ tag: String) -> SweetLogger {
-        SweetLogger(tag: tag)
+        if SweetLogger.options.enabled {
+            SweetLogger(tag: tag)
+        } else {
+            SweetLogger.shared
+        }
     }
 }
 
