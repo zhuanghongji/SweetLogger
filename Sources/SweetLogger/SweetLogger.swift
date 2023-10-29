@@ -14,7 +14,7 @@ public class SweetLogger {
         self.tag = tag
     }
     
-    func generateDateDescrition(dateFormat: String) -> String {
+    func generateDateDescription(dateFormat: String) -> String {
         if dateFormat.isEmpty {
             return ""
         }
@@ -39,7 +39,7 @@ public class SweetLogger {
         let _separator = Self.options.separator
         let terminator = Self.options.terminator
         let useLevelSymbol = Self.options.useLevelSymbol
-        let useLevelDescrition = Self.options.useLevelDescrition
+        let useLevelDescription = Self.options.useLevelDescription
         let useDebugPrint = Self.options.useDebugPrint
         
         var output = ""
@@ -47,8 +47,8 @@ public class SweetLogger {
         // context and message
         let mainChunks: [String] = [
             useLevelSymbol ? level.symbol : "",
-            useLevelDescrition ? level.descrition : "",
-            generateDateDescrition(dateFormat: dateFormat),
+            useLevelDescription ? level.description : "",
+            generateDateDescription(dateFormat: dateFormat),
             brand,
             tag,
             _separator,

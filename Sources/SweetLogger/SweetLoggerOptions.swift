@@ -36,8 +36,8 @@ public class SweetLoggerOptions {
     /// When enabled, the output will be prefixed with an emojj that corresponds to the level.
     public var useLevelSymbol = true
 
-    /// When enabled, the output will be prefixed with a brief descrition that corresponds to the level.
-    public var useLevelDescrition = true
+    /// When enabled, the output will be prefixed with a brief description that corresponds to the level.
+    public var useLevelDescription = true
 
     /// The print function switcher.
     ///

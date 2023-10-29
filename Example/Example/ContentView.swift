@@ -55,7 +55,7 @@ func setupOptions() {
     // Logger.options.terminator = "\n--------------------\n\n"
 
     // Logger.options.useLevelSymbol = false
-    // Logger.options.useLevelDescrition = false
+    // Logger.options.useLevelDescription = false
     // Logger.options.useDebugPrint = false
 
     // SweetLogger.shared.tag = "Honey"
@@ -170,13 +170,13 @@ struct TestLoggerModifiersView1: View {
 struct TestLoggerModifiersView2: View {
     @State private var count = 0
 
-    var countDescrition: String {
+    var countDescription: String {
         "\(count)"
     }
 
     var body: some View {
         VStack {
-            Text(countDescrition)
+            Text(countDescription)
             Button {
                 count += 1
             } label: {
@@ -186,7 +186,7 @@ struct TestLoggerModifiersView2: View {
             }
         }
         .padding()
-        .loggerChange(of: countDescrition, initial: true, name: "countDescrition")
+        .loggerChange(of: countDescription, initial: true, name: "countDescription")
         .loggerChange(of: count, initial: true, name: "count")
         .loggerChange(of: count)
     }

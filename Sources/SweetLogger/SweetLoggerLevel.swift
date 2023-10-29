@@ -30,8 +30,10 @@ extension SweetLoggerLevel {
             "🔴"
         }
     }
-    
-    var descrition: String {
+}
+
+extension SweetLoggerLevel: CustomStringConvertible {
+    var description: String {
         switch self {
         case .verbose:
             "[V]"
@@ -46,4 +48,3 @@ extension SweetLoggerLevel {
         }
     }
 }
-

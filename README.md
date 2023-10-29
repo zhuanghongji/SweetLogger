@@ -36,7 +36,7 @@ struct ExampleApp: App {
         // Logger.options.terminator = "\n--------------------\n\n"
 
         // Logger.options.useLevelSymbol = false
-        // Logger.options.useLevelDescrition = false
+        // Logger.options.useLevelDescription = false
         // Logger.options.useDebugPrint = false
 
         // SweetLogger.shared.tag = "Honey"
@@ -315,13 +315,13 @@ A wrapper of `onChange(of:initial:_:)`, for example:
 struct TestLoggerModifiersView2: View {
     @State private var count = 0
 
-    var countDescrition: String {
+    var countDescription: String {
         "\(count)"
     }
 
     var body: some View {
         VStack {
-            Text(countDescrition)
+            Text(countDescription)
             Button {
                 count += 1
             } label: {
@@ -331,7 +331,7 @@ struct TestLoggerModifiersView2: View {
             }
         }
         .padding()
-        .loggerChange(of: countDescrition, initial: true, name: "countDescrition")
+        .loggerChange(of: countDescription, initial: true, name: "countDescription")
         .loggerChange(of: count, initial: true, name: "count")
         .loggerChange(of: count)
     }
@@ -342,7 +342,7 @@ When this view initially appears, it will print:
 
 ```
 ⚪️ [V] 08:40:41.9440 Sweet Default : loggerChange
-onChange(name: "countDescrition", oldValue: "0", newValue: "0")
+onChange(name: "countDescription", oldValue: "0", newValue: "0")
 
 ⚪️ [V] 08:40:41.9440 Sweet Default : loggerChange
 onChange(name: "count", oldValue: 0, newValue: 0)
@@ -358,7 +358,7 @@ onChange(oldValue: 0, newValue: 1)
 onChange(name: "count", oldValue: 0, newValue: 1)
 
 ⚪️ [V] 08:43:30.0400 Sweet Default : loggerChange
-onChange(name: "countDescrition", oldValue: "0", newValue: "1")
+onChange(name: "countDescription", oldValue: "0", newValue: "1")
 ```
 
 ## License
