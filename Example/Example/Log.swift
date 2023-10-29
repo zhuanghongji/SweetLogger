@@ -45,23 +45,23 @@ extension Log {
 // MARK: With Data Provider
 
 extension Log {
-    static func v(_ message: String, data: LogDataProvider) {
+    static func v(_ message: String, data: SweetLoggerDataProvider) {
         Logger.v(message, data: data)
     }
     
-    static func i(_ message: String, data: LogDataProvider) {
+    static func i(_ message: String, data: SweetLoggerDataProvider) {
         Logger.i(message, data: data)
     }
     
-    static func d(_ message: String, data: LogDataProvider) {
+    static func d(_ message: String, data: SweetLoggerDataProvider) {
         Logger.d(message, data: data)
     }
     
-    static func w(_ message: String, data: LogDataProvider) {
+    static func w(_ message: String, data: SweetLoggerDataProvider) {
         Logger.w(message, data: data)
     }
     
-    static func e(_ message: String, data: LogDataProvider) {
+    static func e(_ message: String, data: SweetLoggerDataProvider) {
         Logger.e(message, data: data)
     }
 }

@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct LogView: View {
-    init() {
-        Log.initOptions()
-    }
+    // Log.initOptions()
 
     var body: some View {
         Text("Hello, Log")

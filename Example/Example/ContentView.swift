@@ -25,10 +25,13 @@ struct ContentView: View {
                 TestLoggerModifiersView1()
                 TestLoggerModifiersView2()
 
-                NavigationLink {
-                    LogView()
-                } label: {
-                    Text("LogView")
+                VStack {
+                    Text("-")
+                    NavigationLink {
+                        LogView()
+                    } label: {
+                        Text("LogView")
+                    }
                 }
             }
         }

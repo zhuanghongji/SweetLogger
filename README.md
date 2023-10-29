@@ -50,7 +50,9 @@ Note: Please ensure that Logger is enabled during debug, as it is disabled by de
 
 ## Basic usage
 
-### Level
+### Log by level
+
+✍️ :
 
 ```swift
 Logger.v("Verbose mssage")
@@ -60,7 +62,7 @@ Logger.w("Warning message")
 Logger.e("Error message")
 ```
 
-Prints:
+✏️ :
 
 ```
 ⚪️ [V] 08:40:41.9400 Sweet Default : Verbose mssage
@@ -74,7 +76,9 @@ Prints:
 🔴 [E] 08:40:41.9410 Sweet Default : Error message
 ```
 
-### With items
+### Log with items
+
+✍️ :
 
 ```swift 
 Logger.v("With items", 1, 2, 3)
@@ -93,7 +97,7 @@ let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
 Logger.v("The rect is", rect)
 ```
 
-Prints:
+✏️ :
 
 ```
 ⚪️ [V] 08:40:41.9410 Sweet Default : With items
@@ -121,14 +125,16 @@ https://developer.apple.com
 (1.0, 2.0, 3.0, 4.0)
 ```
 
-### Custom tag 
+### Log with custom tag
+
+✍️ :
 
 ```swift
 Logger.t("MyTag").v("Custom tag")
 Logger.t("AnotherTag").v("Another tag with items", true, false, separator: ", ")
 ```
 
-Prints: 
+✏️ :
 
 ```
 ⚪️ [V] 08:40:41.9420 Sweet MyTag : Custom tag
@@ -139,7 +145,9 @@ true, false
 
 ## Advance usage
 
-### With data 
+### Log with data 
+
+✍️ :
 
 ```swift
 class MyClass {
@@ -173,7 +181,7 @@ Logger.v("When myClass with item", myClass)
 Logger.v("When myClass with data", data: myClass)
 ```
 
-Prints: 
+✏️ :
 
 ```
 ⚪️ [V] 08:40:41.9430 Sweet Default : When myClass with item
@@ -189,7 +197,9 @@ MyClass {
 }
 ```
 
-### With optional data
+### Log with optional data
+
+✍️ :
 
 ```swift
 var myClass: MyClass? = MyClass()
@@ -199,7 +209,7 @@ myClass = nil
 Logger.v("When myClass is exactly nil", optional: myClass)
 ```
 
-Prints: 
+✏️ :
 
 ```
 ⚪️ [V] 08:40:41.9430 Sweet Default : When myClass with optional
@@ -215,7 +225,9 @@ MyClass {
 __nil__
 ```
 
-### With preseted data provider
+### Log with preseted data
+
+✍️ :
 
 ```swift
 let url = URL(string: "https://developer.apple.com/abc?v1=1")!
@@ -228,7 +240,7 @@ let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
 Logger.v("The rect with data", data: rect)
 ```
 
-Prints: 
+✏️ :
 
 ```
 ⚪️ [V] 08:40:41.9430 Sweet Default : The url with data
