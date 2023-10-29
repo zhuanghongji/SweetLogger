@@ -91,22 +91,22 @@ public extension Logger {
     }
     
     /// Print message in info level with optional data provider
-    static func i(_ message: String, optional: SweetLoggerDataProvider) {
+    static func i(_ message: String, optional: SweetLoggerDataProvider?) {
         SweetLogger.shared.i(message, optional: optional)
     }
     
     /// Print message in debug level with optional data provider
-    static func d(_ message: String, optional: SweetLoggerDataProvider) {
+    static func d(_ message: String, optional: SweetLoggerDataProvider?) {
         SweetLogger.shared.d(message, optional: optional)
     }
     
     /// Print message in warning level with optional data provider
-    static func w(_ message: String, optional: SweetLoggerDataProvider) {
+    static func w(_ message: String, optional: SweetLoggerDataProvider?) {
         SweetLogger.shared.w(message, optional: optional)
     }
     
     /// Print message in error level with optional data provider
-    static func e(_ message: String, optional: SweetLoggerDataProvider) {
+    static func e(_ message: String, optional: SweetLoggerDataProvider?) {
         SweetLogger.shared.e(message, optional: optional)
     }
 }
