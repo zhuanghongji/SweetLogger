@@ -1,6 +1,6 @@
 //
-//  File.swift
-//
+//  SweetLogger+View.swift
+//  SweetLogger
 //
 //  Created by zhuanghongji on 2023/10/27.
 //

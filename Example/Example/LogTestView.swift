@@ -1,5 +1,5 @@
 //
-//  LogView.swift
+//  LogTestView.swift
 //  Example
 //
 //  Created by zhuanghongji on 2023/10/29.
@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-struct LogView: View {
-    // Log.initOptions()
+struct LogTestView: View {
+    init() {
+        // Log.initOptions()
+        setupOptions()
+    }
 
     var body: some View {
         Text("Hello, Log")
@@ -86,5 +89,5 @@ func logWithPresetedDataProvider() {
 }
 
 #Preview {
-    LogView()
+    LogTestView()
 }

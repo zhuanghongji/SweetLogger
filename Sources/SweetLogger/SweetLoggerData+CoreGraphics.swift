@@ -1,6 +1,6 @@
 //
 //  SweetLoggerData+CoreGraphics.swift
-//  Example
+//  SweetLogger
 //
 //  Created by zhuanghongji on 2023/10/24.
 //

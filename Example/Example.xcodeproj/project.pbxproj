@@ -11,9 +11,12 @@
 		294DFD6B2AE7821100222167 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DFD6A2AE7821100222167 /* ContentView.swift */; };
 		294DFD6D2AE7821300222167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294DFD6C2AE7821300222167 /* Assets.xcassets */; };
 		294DFD712AE7821300222167 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294DFD702AE7821300222167 /* Preview Assets.xcassets */; };
+		29513C002AEF4C7000573F0C /* NestedDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29513BFF2AEF4C7000573F0C /* NestedDataTestView.swift */; };
+		29513C022AEF4F5E00573F0C /* ModifiersTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29513C012AEF4F5E00573F0C /* ModifiersTestView.swift */; };
+		29513C042AEF504F00573F0C /* SweetLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 29513C032AEF504F00573F0C /* SweetLogger */; };
 		29A55F322AEDFC1900791E5D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A55F312AEDFC1900791E5D /* Log.swift */; };
-		29A55F362AEDFD5F00791E5D /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A55F352AEDFD5F00791E5D /* LogView.swift */; };
-		29A55F3A2AEE3A9C00791E5D /* TestCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A55F392AEE3A9C00791E5D /* TestCaseView.swift */; };
+		29A55F362AEDFD5F00791E5D /* LogTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A55F352AEDFD5F00791E5D /* LogTestView.swift */; };
+		29A55F3A2AEE3A9C00791E5D /* CollectionsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A55F392AEE3A9C00791E5D /* CollectionsTestView.swift */; };
 		29EBE8A42AEB549D000B451B /* SweetLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBE8A32AEB549D000B451B /* SweetLogger */; };
 /* End PBXBuildFile section */
 
@@ -24,9 +27,11 @@
 		294DFD6C2AE7821300222167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		294DFD6E2AE7821300222167 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		294DFD702AE7821300222167 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		29513BFF2AEF4C7000573F0C /* NestedDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedDataTestView.swift; sourceTree = "<group>"; };
+		29513C012AEF4F5E00573F0C /* ModifiersTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiersTestView.swift; sourceTree = "<group>"; };
 		29A55F312AEDFC1900791E5D /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		29A55F352AEDFD5F00791E5D /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
-		29A55F392AEE3A9C00791E5D /* TestCaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseView.swift; sourceTree = "<group>"; };
+		29A55F352AEDFD5F00791E5D /* LogTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTestView.swift; sourceTree = "<group>"; };
+		29A55F392AEE3A9C00791E5D /* CollectionsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +40,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29EBE8A42AEB549D000B451B /* SweetLogger in Frameworks */,
+				29513C042AEF504F00573F0C /* SweetLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,9 +68,11 @@
 			children = (
 				294DFD682AE7821100222167 /* ExampleApp.swift */,
 				294DFD6A2AE7821100222167 /* ContentView.swift */,
-				29A55F392AEE3A9C00791E5D /* TestCaseView.swift */,
+				29A55F392AEE3A9C00791E5D /* CollectionsTestView.swift */,
+				29513C012AEF4F5E00573F0C /* ModifiersTestView.swift */,
+				29513BFF2AEF4C7000573F0C /* NestedDataTestView.swift */,
+				29A55F352AEDFD5F00791E5D /* LogTestView.swift */,
 				29A55F312AEDFC1900791E5D /* Log.swift */,
-				29A55F352AEDFD5F00791E5D /* LogView.swift */,
 				294DFD6C2AE7821300222167 /* Assets.xcassets */,
 				294DFD6E2AE7821300222167 /* Example.entitlements */,
 				294DFD6F2AE7821300222167 /* Preview Content */,
@@ -98,6 +106,7 @@
 			name = Example;
 			packageProductDependencies = (
 				29EBE8A32AEB549D000B451B /* SweetLogger */,
+				29513C032AEF504F00573F0C /* SweetLogger */,
 			);
 			productName = Example;
 			productReference = 294DFD652AE7821100222167 /* Example.app */;
@@ -157,10 +166,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				294DFD6B2AE7821100222167 /* ContentView.swift in Sources */,
-				29A55F3A2AEE3A9C00791E5D /* TestCaseView.swift in Sources */,
-				29A55F362AEDFD5F00791E5D /* LogView.swift in Sources */,
+				29A55F3A2AEE3A9C00791E5D /* CollectionsTestView.swift in Sources */,
+				29A55F362AEDFD5F00791E5D /* LogTestView.swift in Sources */,
 				294DFD692AE7821100222167 /* ExampleApp.swift in Sources */,
 				29A55F322AEDFC1900791E5D /* Log.swift in Sources */,
+				29513C002AEF4C7000573F0C /* NestedDataTestView.swift in Sources */,
+				29513C022AEF4F5E00573F0C /* ModifiersTestView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +399,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		29513C032AEF504F00573F0C /* SweetLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SweetLogger;
+		};
 		29EBE8A32AEB549D000B451B /* SweetLogger */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SweetLogger;

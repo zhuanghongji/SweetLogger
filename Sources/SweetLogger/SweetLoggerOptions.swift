@@ -1,6 +1,6 @@
 //
 //  SweetLoggerOptions.swift
-//  Example
+//  SweetLogger
 //
 //  Created by zhuanghongji on 2023/10/24.
 //
@@ -32,7 +32,7 @@ public class SweetLoggerOptions {
     ///
     /// If you prefer a more noticeable terminator, "\n--------------------\n\n" is an option.
     public var terminator = "\n"
-    
+
     /// The maximum number of data nesting levels.
     public var maxDataNestingLevels = 5
 

@@ -11,36 +11,35 @@ import SweetLogger
 import SwiftUI
 
 struct ContentView: View {
-
     init() {
         setupOptions()
     }
 
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 20) {
                 Text("🐝")
                 Text("Hello, SweetLogger")
-
-                TestLoggerModifiersView1()
-                TestLoggerModifiersView2()
-
-                VStack {
-                    Text("-")
-                    NavigationLink {
-                        TestCaseView()
-                    } label: {
-                        Text("TestCaseView")
-                    }
+                Text("-----")
+                NavigationLink {
+                    CollectionsTestView()
+                } label: {
+                    Text("CollectionsTestView")
                 }
-
-                VStack {
-                    Text("-")
-                    NavigationLink {
-                        LogView()
-                    } label: {
-                        Text("LogView")
-                    }
+                NavigationLink {
+                    NestedDataTestView()
+                } label: {
+                    Text("NestedDataTestView")
+                }
+                NavigationLink {
+                    ModifiersTestView()
+                } label: {
+                    Text("ModifiersTestView")
+                }
+                NavigationLink {
+                    LogTestView()
+                } label: {
+                    Text("LogTestView")
                 }
             }
         }
@@ -165,52 +164,6 @@ func testWithPresetedDataProvider() {
 
     let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
     Logger.v("The rect with data", data: rect)
-}
-
-// MARK: Using logger modifiers
-
-struct TestLoggerModifiersView1: View {
-    @State private var visible = true
-
-    var body: some View {
-        VStack {
-            if visible {
-                Image(systemName: "globe")
-                    .loggerAppearance(name: "GlobeImage")
-            }
-            Button {
-                visible.toggle()
-            } label: {
-                Text("Toggle Visibility")
-            }
-        }
-        .padding()
-    }
-}
-
-struct TestLoggerModifiersView2: View {
-    @State private var count = 0
-
-    var countDescription: String {
-        "\(count)"
-    }
-
-    var body: some View {
-        VStack {
-            Text(countDescription)
-            Button {
-                count += 1
-            } label: {
-                withAnimation {
-                    Text("Add Count")
-                }
-            }
-        }
-        .padding()
-        .loggerChange(of: countDescription, initial: true, name: "countDescription")
-        .loggerChange(of: count, initial: true, name: "count")
-        .loggerChange(of: count)
-    }
 }
 
 #Preview {

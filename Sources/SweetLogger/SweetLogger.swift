@@ -1,5 +1,9 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+//
+//  SweetLogger.swift
+//  SweetLogger
+//
+//  Created by zhuanghongji on 2023/10/24.
+//
 
 import Foundation
 

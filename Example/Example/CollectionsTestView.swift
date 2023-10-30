@@ -1,5 +1,5 @@
 //
-//  TestCaseView.swift
+//  CollectionsTestView.swift
 //  Example
 //
 //  Created by zhuanghongji on 2023/10/29.
@@ -9,19 +9,18 @@ import CoreGraphics
 import SweetLogger
 import SwiftUI
 
-struct TestCaseView: View {
+struct CollectionsTestView: View {
     init() {
         setupOptions()
     }
 
     var body: some View {
-        Text("Some test case")
+        Text("Collections Test View")
             .font(.title)
             .onAppear {
                 testArray()
                 testDictionary()
                 testSet()
-                testNested()
             }
     }
 }
@@ -55,63 +54,17 @@ func testSet() {
 struct HashableData: Hashable {
     let x: Int
     let y: Int
-    
+
     static func == (lhs: HashableData, rhs: HashableData) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(x.hashValue)
         hasher.combine(y.hashValue)
     }
 }
 
-class TestClass {
-    let p1 = "1"
-    let p2 = "Two"
-    let p3: Bool? = false
-    let pArray = ["a", "b", "c"]
-    let pArrays = [
-        ["a", "b", "c"],
-        ["A", "B", "C"]
-    ]
-    let pDictionary: [String: String]
-    let pDictionaries: [String: [String: String]]
-
-    init() {
-        let dict = [
-            "a": "A",
-            "b": "B",
-            "c": "C"
-        ]
-        pDictionary = dict
-        pDictionaries = [
-            "a": dict,
-            "b": dict,
-            "c": dict
-        ]
-    }
-}
-
-extension TestClass: SweetLoggerDataProvider {
-    func provideSweetLoggerData(data: SweetLoggerData) {
-        data.type("TestClass")
-            .with("p1", p1)
-            .with("p2", p2)
-            .with("p3", optional: p3)
-            .with("pArray", pArray)
-            .with("pArrays", pArrays)
-            .with("pDictionary", pDictionary)
-            .with("pDictionaries", pDictionaries)
-            .end()
-    }
-}
-
-func testNested() {
-    let testClass = TestClass()
-    Logger.d("With data(nested)", data: testClass)
-}
-
 #Preview {
-    TestCaseView()
+    CollectionsTestView()
 }
