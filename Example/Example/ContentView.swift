@@ -28,6 +28,15 @@ struct ContentView: View {
                 VStack {
                     Text("-")
                     NavigationLink {
+                        TestCaseView()
+                    } label: {
+                        Text("TestCaseView")
+                    }
+                }
+
+                VStack {
+                    Text("-")
+                    NavigationLink {
                         LogView()
                     } label: {
                         Text("LogView")
@@ -64,6 +73,7 @@ func setupOptions() {
     // Logger.options.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
     // Logger.options.separator = "|"
     // Logger.options.terminator = "\n--------------------\n\n"
+    // Logger.options.maxDataNestingLevels = 6
 
     // Logger.options.useLevelSymbol = false
     // Logger.options.useLevelDescription = false

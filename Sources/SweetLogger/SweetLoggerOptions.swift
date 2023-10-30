@@ -32,6 +32,9 @@ public class SweetLoggerOptions {
     ///
     /// If you prefer a more noticeable terminator, "\n--------------------\n\n" is an option.
     public var terminator = "\n"
+    
+    /// The maximum number of data nesting levels.
+    public var maxDataNestingLevels = 5
 
     /// When enabled, the output will be prefixed with an emojj that corresponds to the level.
     public var useLevelSymbol = true

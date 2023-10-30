@@ -23,12 +23,87 @@ public class SweetLogger {
         return dateFormatter.string(from: Date())
     }
     
+    func append(output: inout String,
+                provider: SweetLoggerDataProvider?,
+                isProviderOptional: Bool,
+                tab: Int,
+                maxDataNestingLevels: Int,
+                useDebugPrint: Bool)
+    {
+        output.append(tab == 0 ? "\n" : "")
+        if isProviderOptional, provider == nil {
+            output.append("nil")
+            return
+        }
+        guard let provider else {
+            return
+        }
+        let data = SweetLoggerData(useDebugPrint: useDebugPrint)
+        provider.provideSweetLoggerData(data: data)
+        
+        // start
+        output.append("\(data.name) {")
+        
+        // items
+        var indent = ""
+        for _ in 0 ..< tab {
+            indent.append("    ")
+        }
+        data.items.forEach { key, value, optionalValue in
+            output.append("\n\(indent)    \(key): ")
+            var isValueOptional = false
+            if let it = value as? String, it == SweetLoggerData.ignoreFlag {
+                isValueOptional = true
+            }
+            // First, check if the `optionalValue` is actually nil.
+            if isValueOptional, optionalValue == nil {
+                output.append("nil")
+                return
+            }
+                
+            // Nested
+            if tab <= maxDataNestingLevels {
+                if let _provider = value as? SweetLoggerDataProvider {
+                    append(output: &output,
+                           provider: _provider,
+                           isProviderOptional: false,
+                           tab: tab + 1,
+                           maxDataNestingLevels: maxDataNestingLevels,
+                           useDebugPrint: useDebugPrint)
+                    return
+                }
+                if isValueOptional, let _optionalProvider = optionalValue as? SweetLoggerDataProvider? {
+                    append(output: &output,
+                           provider: _optionalProvider,
+                           isProviderOptional: true,
+                           tab: tab + 1,
+                           maxDataNestingLevels: maxDataNestingLevels,
+                           useDebugPrint: useDebugPrint)
+                    return
+                }
+            }
+            
+            // Not nested
+            if isValueOptional {
+                let str = useDebugPrint ? String(reflecting: optionalValue) : String(describing: optionalValue)
+                output.append(str.isEmpty ? "__EmptyString__" : str)
+                return
+            }
+            let str = useDebugPrint ? String(reflecting: value) : String(describing: value)
+            output.append(str.isEmpty ? "__EmptyString__" : str)
+        }
+        
+        // end
+        output.append(data.items.isEmpty ? "" : "\n")
+        output.append("\(indent)}")
+    }
+    
     func sweet(level: SweetLoggerLevel,
                message: String,
                items: [Any] = [],
                separator: String = " ",
                provider: SweetLoggerDataProvider? = nil,
-               optional: Bool = false,
+               isProviderOptional: Bool = false,
                raw: Any? = nil)
     {
         guard Self.options.enabled else {
@@ -38,6 +113,7 @@ public class SweetLogger {
         let dateFormat = Self.options.dateFormat
         let _separator = Self.options.separator
         let terminator = Self.options.terminator
+        let maxDataNestingLevels = Self.options.maxDataNestingLevels
         let useLevelSymbol = Self.options.useLevelSymbol
         let useLevelDescription = Self.options.useLevelDescription
         let useDebugPrint = Self.options.useDebugPrint
@@ -69,14 +145,14 @@ public class SweetLogger {
             output.append(itemChunks.joined(separator: separator))
         }
         
-        // provider (newline first, then data provided)
-        if provider == nil, optional {
-            output.append("\n__nil__")
-        } else if let provider {
-            let data = SweetLoggerData(useDebugPrint: useDebugPrint)
-            provider.provideSweetLoggerData(data: data)
-            output.append("\n")
-            output.append(data.content)
+        // provider
+        if provider != nil || isProviderOptional  {
+            append(output: &output,
+                   provider: provider,
+                   isProviderOptional: isProviderOptional,
+                   tab: 0,
+                   maxDataNestingLevels: maxDataNestingLevels,
+                   useDebugPrint: useDebugPrint)
         }
         
         // raw
@@ -142,23 +218,23 @@ public extension SweetLogger {
 
 public extension SweetLogger {
     func v(_ message: String, optional provider: SweetLoggerDataProvider?) {
-        sweet(level: .verbose, message: message, provider: provider, optional: true)
+        sweet(level: .verbose, message: message, provider: provider, isProviderOptional: true)
     }
     
     func i(_ message: String, optional provider: SweetLoggerDataProvider?) {
-        sweet(level: .info, message: message, provider: provider, optional: true)
+        sweet(level: .info, message: message, provider: provider, isProviderOptional: true)
     }
     
     func d(_ message: String, optional provider: SweetLoggerDataProvider?) {
-        sweet(level: .debug, message: message, provider: provider, optional: true)
+        sweet(level: .debug, message: message, provider: provider, isProviderOptional: true)
     }
     
     func w(_ message: String, optional provider: SweetLoggerDataProvider?) {
-        sweet(level: .warning, message: message, provider: provider, optional: true)
+        sweet(level: .warning, message: message, provider: provider, isProviderOptional: true)
     }
     
     func e(_ message: String, optional provider: SweetLoggerDataProvider?) {
-        sweet(level: .error, message: message, provider: provider, optional: true)
+        sweet(level: .error, message: message, provider: provider, isProviderOptional: true)
     }
 }
 

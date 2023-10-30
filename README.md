@@ -56,6 +56,7 @@ Note: Please ensure that Logger is enabled during debug, as it is disabled by de
 | `dateFormat` | The date format in output. | String | "HH:mm:ss.SSSS" |
 | `separator` | The flag is used before the message to separate it from contextual information. | String | ":" |
 | `terminator` | The global terminator for dividing each block of Logger output. | String |  "\n" |
+| `maxDataNestingLevels` | The maximum number of data nesting levels. | Int |  5 |
 | `useLevelSymbol` |  When enabled, the output will be prefixed with an emojj that corresponds to the level.  | Bool |  true |
 | `useLevelDescription` |  When enabled, the output will be prefixed with a brief description that corresponds to the level. | Bool |  true |
 | `useDebugPrint` | The print function switcher. | Bool |  true |
@@ -236,7 +237,7 @@ MyClass {
 }
 
 ⚪️ [V] 08:40:41.9430 Sweet Default : When myClass is exactly nil
-__nil__
+nil
 ```
 
 ### Log with preseted data
@@ -260,15 +261,13 @@ Logger.v("The rect with data", data: rect)
 ⚪️ [V] 08:40:41.9430 Sweet Default : The url with data
 URL {
     absoluteString: "https://developer.apple.com/abc?v1=1"
-    absoluteURL: https://developer.apple.com/abc?v1=1
-    baseURL: "__nil__"
-    fragment: "__nil__"
-    host: "developer.apple.com"
+    fragment: nil
+    host: Optional("developer.apple.com")
     lastPathComponent: "abc"
     pathExtension: ""
-    port: "__nil__"
-    query: "v1=1"
-    scheme: "https"
+    port: nil
+    query: Optional("v1=1")
+    scheme: Optional("https")
 }
 
 ⚪️ [V] 08:40:41.9430 Sweet Default : The point with data
