@@ -26,6 +26,15 @@ extension Dictionary: SweetLoggerDataProvider where Key: Comparable {
     }
 }
 
+extension Set: SweetLoggerDataProvider {
+    public func provideSweetLoggerData(data: SweetLoggerData) {
+        data.typed("Set")
+        self.enumerated().forEach { item in
+            data.append("\(item.offset)", item.element)
+        }
+    }
+}
+
 extension URL: SweetLoggerDataProvider {
     public func provideSweetLoggerData(data: SweetLoggerData) {
         data.type("URL")
